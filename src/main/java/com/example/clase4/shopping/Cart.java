@@ -15,7 +15,7 @@ public class Cart {
     }
 
     public void addProductsWithQuantity(Product product, int quantity) {
-        assertValidProductQuantity(quantity);
+        isQuantityValid(quantity);
 
         int i = 0;
         while (i < quantity) {
@@ -25,7 +25,7 @@ public class Cart {
     }
 
     public void addProduct(Product product) {
-        assertValidProduct(product);
+        isValidProduct(product);
         this.productList.add(product);
     }
 
@@ -44,13 +44,13 @@ public class Cart {
         return productList.size();
     }
 
-    public void assertValidProduct(Product product) {
+    public void isValidProduct(Product product) {
         if (!catalog.contains(product)) {
             throw new ProductNotFoundException(ErrorMessage.NOT_VALID_PRODUCT_EXCEPTION.getMessage());
         }
     }
 
-    public void assertValidProductQuantity(int quantity) {
+    public void isQuantityValid(int quantity) {
         if (quantity < 0) {
             throw new ProductNotFoundException(ErrorMessage.NOT_VALID_PRODUCT_QUANTITY_EXCEPTION.getMessage());
         }
