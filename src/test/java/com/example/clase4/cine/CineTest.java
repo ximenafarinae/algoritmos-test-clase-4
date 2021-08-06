@@ -26,6 +26,14 @@ class CineTest {
     }
 
     @Test
+    @DisplayName("Test when null values are sent total recaudado")
+    public void testNullListTotalRecaudado() {
+        Double result = Cine.cantidadTotalRecaudada(null);
+        assertNotNull(result, "The result cannot be null");
+        assertEquals(500, result);
+    }
+
+    @Test
     @DisplayName("Tests happy path cantidad personas")
     public void testHappyPathCantidadPersonas() {
         Long result = Cine.cantidadPersonas(List.of(new Persona(30, 200), new Persona(17, 150), new Persona(8, 100), new Persona(18, 200)));

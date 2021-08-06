@@ -18,6 +18,9 @@ de 18 en adelante -> $200
 Tenemos la clase Persona, donde vamos a usarla para modelar edad, y las propiedades que crean convenientes
  */
 
+import com.example.clase4.exceptions.ProductNotFoundException;
+import com.example.clase4.shopping.ErrorMessage;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,6 +29,7 @@ public class Cine {
 
     public static double cantidadTotalRecaudada(List<Persona> personas) {
 
+        //Optional.ofNullable(personas).orElseThrow(() -> new ProductNotFoundException("No existe list"));
         return personas
                 .stream()
                 .filter(obj -> Objects.nonNull(obj))
@@ -38,7 +42,7 @@ public class Cine {
 
         return personas
                 .stream()
-                .filter(obj -> Objects.nonNull(obj))
+                .filter(Objects::nonNull)
                 .count();
 
     }
