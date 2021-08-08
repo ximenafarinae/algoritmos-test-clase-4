@@ -1,5 +1,6 @@
 package com.example.clase4.agenda;
 
+import com.example.clase4.exceptions.ContactNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +29,12 @@ class AgendaTest extends Agenda {
     }
 
     @Test
+    @DisplayName("Tests contact not found modify")
+    public void testContactExceptionPathModify() {
+        assertThrows(ContactNotFoundException.class, () -> Agenda.modificarTelefono("Ximena", 1131391998));
+    }
+
+    @Test
     @DisplayName("Tests happy path show value")
     public void testHappyPathShowValue() {
         Agenda.nuevoContacto("Laura", 1131391999);
@@ -47,7 +54,7 @@ class AgendaTest extends Agenda {
 
     @Test
     @DisplayName("Tests happy path eliminated false")
-    public void testHappyPathEliminatedFalse() {
+    public void testHappyPathEliminatedFalse() { //TODO -> consultar: nunca deberia dar false, ya que si no encuentra el telefono lanza una excepcion.
         Agenda.nuevoContacto("Laura", 1131391999);
         Boolean eliminado = Agenda.eliminarTelefono("Barbara");
 

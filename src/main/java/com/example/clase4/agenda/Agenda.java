@@ -1,7 +1,10 @@
 package com.example.clase4.agenda;
 
+import com.example.clase4.exceptions.ContactNotFoundException;
+
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -23,21 +26,30 @@ public class Agenda {
             new HashMap<>();
 
     public static void nuevoContacto(String nombre, int telefono) {
-        //TODO -> implement me
+        miAgenda.put(nombre, telefono);
     }
 
     public static void modificarTelefono(String nombre, int telefono) {
-        //TODO -> implement me
+        if (Objects.isNull(miAgenda.get(nombre))) {
+            throw new ContactNotFoundException("Contacto no existente");
+        }
+        miAgenda.put(nombre, telefono);
     }
 
     public static Integer obtenerTelefono(String nombre) {
-        //TODO -> implement me
-        return null;
+        Integer telefono = miAgenda.get(nombre);
+        if (Objects.isNull(telefono)) {
+            throw new ContactNotFoundException("Contacto no existente");
+        }
+        return telefono;
     }
 
     public static boolean eliminarTelefono(String nombre) {
-        //TODO -> implement me
-        return false;
+        Integer telefono = miAgenda.remove(nombre);
+        if (Objects.isNull(telefono)) {
+            throw new ContactNotFoundException("Contacto no existente");
+        }
+        return true;
     }
 
     protected static List<Integer> miAgenda() {

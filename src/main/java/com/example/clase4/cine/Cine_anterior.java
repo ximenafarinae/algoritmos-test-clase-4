@@ -1,4 +1,5 @@
 package com.example.clase4.cine;
+
 import java.util.List;
 
 /*
@@ -26,7 +27,6 @@ public class Cine_anterior {
         double cantidadTotal = 0;
 
         for (Persona persona : personas) {
-
             if (persona != null) {
                 cantidadTotal = cantidadTotal + persona.getPrecio();
             }
@@ -37,9 +37,9 @@ public class Cine_anterior {
     public static Integer cantidadPersonas(List<Persona> personas) {
         Integer cantidadPersonas = 0;
 
-        for(int i=0; i<personas.size(); i++){
-            if(personas.get(i) != null)
-            cantidadPersonas++;
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i) != null)
+                cantidadPersonas++;
         }
         return cantidadPersonas;
     }
@@ -50,15 +50,14 @@ public class Cine_anterior {
         int cantidad = 0;
 
 
-        for(int i=0; i<personas.size(); i++){
-            if(personas.get(i)!=null){
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i) != null) {
                 cantidad++;
                 sum = sum + personas.get(i).getEdad();
 
             }
         }
-        promedio = (sum/cantidad);
-
+        promedio = (sum / cantidad);
 
 
         return promedio;

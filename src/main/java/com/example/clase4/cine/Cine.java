@@ -29,7 +29,6 @@ public class Cine {
 
     public static double cantidadTotalRecaudada(List<Persona> personas) {
 
-        //Optional.ofNullable(personas).orElseThrow(() -> new ProductNotFoundException("No existe list"));
         return personas
                 .stream()
                 .filter(obj -> Objects.nonNull(obj))
